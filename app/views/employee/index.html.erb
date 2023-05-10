@@ -1,0 +1,10 @@
+<h2>Employees</h2>
+<% @employees.each do |employee| %>
+  <p><%= employee.name %> <%= employee.last_name %>, age: <%= employee.birthdate %> (<%=
+    if Time.now.month - employee.birthdate.month > 0
+      Time.now.year - employee.birthdate.year
+    else
+      Time.now.year - employee.birthdate.year - 1
+    end
+  %> years)</p>
+<% end %>
