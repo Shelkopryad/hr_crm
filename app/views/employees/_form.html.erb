@@ -1,0 +1,42 @@
+<div>
+  <%= form_with model: employee do |form| %>
+    <div>
+      <%= form.label :name %><br>
+      <%= form.text_field :name %>
+    </div>
+
+    <div>
+      <%= form.label :middle_name %><br>
+      <%= form.text_field :middle_name %>
+    </div>
+
+    <div>
+      <%= form.label :last_name %><br>
+      <%= form.text_field :last_name %>
+    </div>
+
+    <div>
+      <%= form.label :current_position %><br>
+      <%= form.text_field :current_position %>
+    </div>
+
+    <div>
+      <%= form.label :email %><br>
+      <%= form.text_field :email %>
+    </div>
+
+    <div>
+      <%= form.label :birthdate %><br>
+      <%= form.date_field :birthdate %>
+    </div>
+
+    <div>
+      <%= form.label :date_of_employing %><br>
+      <%= form.date_field :date_of_employing %>
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>

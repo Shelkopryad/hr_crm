@@ -10,15 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_10_123911) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_11_105404) do
   create_table "employees", force: :cascade do |t|
     t.string "name", null: false
     t.string "middle_name"
     t.string "last_name", null: false
-    t.datetime "birthdate", null: false
+    t.string "current_position"
+    t.date "birthdate", null: false
+    t.date "date_of_employing"
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "history_points", force: :cascade do |t|
+    t.text "description"
+    t.integer "employee_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["employee_id"], name: "index_history_points_on_employee_id"
+  end
+
+  add_foreign_key "history_points", "employees"
 end

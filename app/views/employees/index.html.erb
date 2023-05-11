@@ -1,0 +1,11 @@
+<% @employees.each do |employee| %>
+  <div>
+    <p>
+      <%= link_to "#{employee.name} #{employee.last_name}", employee %>, <%= employee.email %>
+    </p>
+  </div>
+<% end %>
+
+<div>
+  <%= link_to 'New', :new_employee %>
+</div>

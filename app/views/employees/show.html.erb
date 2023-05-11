@@ -1,0 +1,18 @@
+<div>
+  <a href="<%= employees_path %>">< Return</a>
+</div>
+<div>
+  <p><%= @employee.name %></p>
+  <p><%= @employee.last_name %></p>
+  <p><%= @employee.current_position %></p>
+  <p><%= @employee.birthdate %></p>
+  <p><%= @employee.date_of_employing %></p>
+  <p><%= @employee.email %></p>
+  <p><%= link_to 'Edit', edit_employee_path(@employee) %></p>
+  <br />
+  <ul>
+    <% @history_points.each do |point| %>
+      <li><%= point.description %></li>
+    <% end %>
+  </ul>
+</div>

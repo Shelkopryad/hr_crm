@@ -10,6 +10,13 @@ module HrCrm
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
+    silence_warnings do
+      begin
+        require 'pry'
+        IRB = Pry
+      rescue LoadError
+      end
+    end
 
     # Configuration for the application, engines, and railties goes here.
     #
