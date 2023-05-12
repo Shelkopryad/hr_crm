@@ -1,8 +1,6 @@
-<div>
-  <p><%= @employee.name %></p>
-  <p><%= @employee.last_name %></p>
-  <p><%= @employee.current_position %></p>
-  <p><%= @employee.birthdate %></p>
-  <p><%= @employee.date_of_employing %></p>
-  <p><%= @employee.email %></p>
-</div>
+<h2><%= @employee.last_name %> <%= @employee.name %> <%= @employee.middle_name %></h2>
+<p>Email: <%= @employee.email %></p>
+<p>Birthdate: <%= @employee.birthdate %></p>
+<p>Some Company</p>
+<h4>Position: <%= @employee.current_position %></h4>
+<p>Date of employing: <%= @employee.date_of_employing %></p>
