@@ -7,6 +7,17 @@ class EmployeesController < ApplicationController
   def show
     @employee = Employee.find(params[:id])
     @history_points = @employee.history_point
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+
+        render pdf: "Employee",
+               template: "employees/reference",
+               layout: 'pdf',
+               formats: [:html]
+      end
+    end
   end
 
   def new
