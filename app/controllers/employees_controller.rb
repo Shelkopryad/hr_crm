@@ -7,17 +7,14 @@ class EmployeesController < ApplicationController
   def show
     @employee = Employee.find(params[:id])
     @history_points = @employee.history_point
+  end
 
-    respond_to do |format|
-      format.html
-      format.pdf do
-
-        render pdf: "Employee",
-               template: "employees/reference",
-               layout: 'pdf',
-               formats: [:html]
-      end
-    end
+  def print_reference
+    @employee = Employee.find(params[:id])
+    render pdf: "#{@employee.last_name} #{@employee.name}",
+           template: "employees/reference",
+           layout: 'pdf',
+           formats: [:html]
   end
 
   def new

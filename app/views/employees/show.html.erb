@@ -1,5 +1,5 @@
 <div>
-  <a href="<%= employees_path %>">< Return</a>
+  <%= link_to '<<< Return', employees_path %>
 </div>
 <div>
   <p><%= @employee.name %></p>
@@ -18,5 +18,5 @@
 </div>
 
 <div>
-  <%= link_to 'This page in PDF', employee_path(@employee, format: :pdf), target: :_blank %>
+  <%= link_to 'This page in PDF', print_reference_employee_path(@employee, format: :pdf), target: :_blank %>
 </div>
