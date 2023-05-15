@@ -1,10 +1,27 @@
-<% @employees.each do |employee| %>
-  <div>
-    <p>
-      <%= link_to "#{employee.name} #{employee.last_name}", employee %>, <%= employee.email %>
-    </p>
-  </div>
-<% end %>
+<div class="row">
+  <table class="col s6">
+    <thead>
+    <tr>
+      <th>Employee</th>
+      <th>Employee email</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= link_to "#{employee.name} #{employee.last_name}", employee %></td>
+        <td><%= employee.email %></td>
+        <td><%= link_to "Destroy", employee_path(employee), data: {
+          turbo_method: :delete,
+          turbo_confirm: "Are you sure?"
+        } %></td>
+      </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+</div>
 
 <div>
   <%= link_to 'New', :new_employee %>

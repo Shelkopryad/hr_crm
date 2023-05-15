@@ -12,7 +12,7 @@ class EmployeesController < ApplicationController
   def print_reference
     @employee = Employee.find(params[:id])
     render pdf: "#{@employee.last_name} #{@employee.name}",
-           template: "employees/reference",
+           template: "employees/sertificate_of_empl",
            layout: 'pdf',
            formats: [:html]
   end
@@ -60,12 +60,15 @@ class EmployeesController < ApplicationController
   end
 
   def destroy
+    @employee = Employee.find(params[:id])
+    @employee.destroy
 
+    redirect_to root_path, status: :see_other
   end
 
   private
   def employee_params
-    params.require(:employee).permit(:name, :last_name, :middle_name, :current_position, :email, :birthdate, :date_of_employing)
+    params.require(:employee).permit(:name, :last_name, :middle_name, :current_position, :email, :birthdate, :date_of_employing, :photo)
   end
 
 end
