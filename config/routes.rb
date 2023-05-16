@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :employees do
     member do
       get :print_reference
+      patch :add_vacation
     end
   end
   # Defines the root path route ("/")

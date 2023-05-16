@@ -15,17 +15,35 @@
         <p><%= @employee.date_of_employing %></p>
         <p><%= @employee.email %></p>
         <p><%= link_to 'Edit', edit_employee_path(@employee) %></p>
-        <div class="divider"></div>
-        <ul>
-          <% @history_points.each do |point| %>
-            <li><%= point.description %></li>
-          <% end %>
-        </ul>
+
+        <% unless @history_points.empty? %>
+          <div class="divider"></div>
+          <span class="card-title">History:</span>
+          <ul>
+            <% @history_points.each do |point| %>
+              <li><%= point.description %></li>
+            <% end %>
+          </ul>
+        <% end %>
+
       </div>
 
       <div class="card-action">
         <%= link_to 'Certificate of employment', print_reference_employee_path(@employee, format: :pdf), target: :_blank %>
       </div>
     </div>
+  </div>
+  <div class="col s13 m6">
+    <span class="card-title">Vacations:</span>
+    <br />
+    <% unless @empl_vacations.empty? %>
+      <ul>
+        <% @empl_vacations.each do |vacation| %>
+          <li><%= vacation.start_date.strftime('%Y.%m.%d') %> - <%= vacation.end_date.strftime('%Y.%m.%d') %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= link_to 'Add vacation', add_vacation_employee_path(@employee) %>
   </div>
 </div>

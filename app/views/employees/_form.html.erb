@@ -1,5 +1,5 @@
-<div>
-  <%= form_with model: employee do |form| %>
+<div class="row">
+  <%= form_with model: employee, html: { class: "col s8" } do |form| %>
     <div>
       <%= form.label :photo %><br>
       <%= form.file_field :photo %>
@@ -32,7 +32,7 @@
 
     <div>
       <%= form.label :birthdate %><br>
-      <%= form.date_field :birthdate %>
+      <%= form.date_field :birthdate, class: 'datepicker' %>
     </div>
 
     <div>
