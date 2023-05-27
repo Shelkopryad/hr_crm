@@ -16,11 +16,11 @@
         <p><%= @employee.email %></p>
         <p><%= link_to 'Edit', edit_employee_path(@employee) %></p>
 
-        <% unless @history_points.empty? %>
+        <% unless @employee.history_point.empty? %>
           <div class="divider"></div>
           <span class="card-title">History:</span>
           <ul>
-            <% @history_points.each do |point| %>
+            <% @employee.history_point.each do |point| %>
               <li><%= point.description %></li>
             <% end %>
           </ul>
@@ -36,14 +36,20 @@
   <div class="col s13 m6">
     <span class="card-title">Vacations:</span>
     <br />
-    <% unless @empl_vacations.empty? %>
+    <% unless @employee.vacation.empty? %>
       <ul>
-        <% @empl_vacations.each do |vacation| %>
-          <li><%= vacation.start_date.strftime('%Y.%m.%d') %> - <%= vacation.end_date.strftime('%Y.%m.%d') %></li>
+        <% @employee.vacation.each do |vacation| %>
+          <li>
+            <%= vacation.start_date.strftime('%Y.%m.%d') %> - <%= vacation.end_date.strftime('%Y.%m.%d') %>
+            <%= link_to "Destroy", employee_vacation_path(vacation), data: {
+              turbo_method: :delete,
+              turbo_confirm: "Are you sure?"
+            } %>
+          </li>
         <% end %>
       </ul>
     <% end %>
 
-    <%= link_to 'Add vacation', add_vacation_employee_path(@employee) %>
+    <%= link_to 'Add vacation', new_employee_vacation_path(@employee) %>
   </div>
 </div>

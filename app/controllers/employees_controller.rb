@@ -6,8 +6,9 @@ class EmployeesController < ApplicationController
 
   def show
     @employee = Employee.find(params[:id])
-    @history_points = @employee.history_point
-    @empl_vacations = @employee.vacation
+    # @history_points = @employee.history_point
+    # @empl_vacations = @employee.vacation
+    # @
   end
 
   def new
@@ -65,11 +66,6 @@ class EmployeesController < ApplicationController
            template: "employees/sertificate_of_empl",
            layout: 'pdf',
            formats: [:html]
-  end
-
-  def add_vacation
-    @employee = Employee.find(params[:id])
-    @employee.vacation
   end
 
   private
