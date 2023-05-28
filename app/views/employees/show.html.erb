@@ -40,11 +40,18 @@
       <ul>
         <% @employee.vacation.each do |vacation| %>
           <li>
-            <%= vacation.start_date.strftime('%Y.%m.%d') %> - <%= vacation.end_date.strftime('%Y.%m.%d') %>
-            <%= link_to "Destroy", employee_vacation_path(vacation), data: {
-              turbo_method: :delete,
-              turbo_confirm: "Are you sure?"
-            } %>
+            <% if vacation.spent %>
+              Spent: <%= vacation.start_date.strftime('%Y.%m.%d') %> - <%= vacation.end_date.strftime('%Y.%m.%d') %>
+            <% elsif vacation.sheduled %>
+              Scheduled: <%= vacation.start_date.strftime('%Y.%m.%d') %> - <%= vacation.end_date.strftime('%Y.%m.%d') %>
+              <%= link_to "Cancel vacation", employee_vacation_path(vacation), data: {
+                turbo_method: :delete,
+                turbo_confirm: "Are you sure?"
+              } %>
+            <% elsif vacation.canceled %>
+              Canceled: <%= vacation.start_date.strftime('%Y.%m.%d') %> - <%= vacation.end_date.strftime('%Y.%m.%d') %>
+            <% end %>
+            
           </li>
         <% end %>
       </ul>

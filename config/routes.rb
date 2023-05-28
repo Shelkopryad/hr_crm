@@ -4,8 +4,10 @@ Rails.application.routes.draw do
     member do
       get :print_reference
     end
-    resources :vacation
+    resources :vacations
   end
+
+  
   # Defines the root path route ("/")
   root "employees#index"
 

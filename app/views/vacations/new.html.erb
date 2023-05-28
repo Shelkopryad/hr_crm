@@ -1,0 +1,23 @@
+<div class="row">
+  <%= form_with model: [@employee, @employee.vacation.build], html: { class: "col s8" } do |form| %>
+
+    <div>
+      <%= form.label :start_date %><br>
+      <%= form.date_field :start_date %>
+    </div>
+
+    <div>
+      <%= form.label :end_date %><br>
+      <%= form.date_field :end_date %>
+    </div>
+
+    <div>
+      <%= form.label :duration %><br>
+      <%= form.text_field :duration %>
+    </div>
+
+    <div>
+      <%= form.submit %>
+    </div>
+  <% end %>
+</div>
