@@ -33,17 +33,13 @@ class EmployeesController < ApplicationController
     history_points = []
     employee_params.each do |key, value|
       if value.to_s != previous_params.send(key).to_s && key != 'photo'
-        history_points << @employee.history_point.new(
+        history_points << @employee.history_point.create(
           description: "#{Time.now.strftime('%Y-%m-%d %H:%M')} Changed #{key} from #{previous_params.send(key)} to #{value}"
         )
       end
     end
 
     if @employee.update(employee_params)
-      history_points.each do |hp|
-        hp.save
-      end
-
       redirect_to @employee, notice: 'Employee Created Successfully.'
     else
       render :edit, status: :unprocessable_entity

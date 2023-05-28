@@ -4,7 +4,12 @@ Rails.application.routes.draw do
     member do
       get :print_reference
     end
-    resources :vacations
+    resources :vacations do
+      member do
+        get :print_application
+        post :cancel_vacation
+      end
+    end
   end
 
   

@@ -63,9 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_28_095746) do
     t.date "start_date"
     t.date "end_date"
     t.integer "duration"
-    t.boolean "sheduled"
-    t.boolean "spent"
-    t.boolean "canceled"
+    t.string "status"
     t.integer "employee_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
