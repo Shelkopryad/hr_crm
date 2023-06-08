@@ -13,7 +13,14 @@
         <p><%= @employee.date_of_employing %></p>
         <p><%= @employee.email %></p>
         <p><%= link_to 'Edit', edit_employee_path(@employee) %></p>
+      </div>
+      <% unless @employee.contract.empty? %>
+        <div class="card-action">
+          <%= link_to 'Certificate of employment', print_reference_employee_path(@employee, format: :pdf), target: :_blank %>
+        </div>
+      <% end %>
 
+      <div class="card-content white-text">
         <% unless @employee.history_point.empty? %>
           <div class="divider"></div>
           <span class="card-title">History:</span>
@@ -24,11 +31,6 @@
           </ul>
         <% end %>
       </div>
-      <% unless @employee.contract.empty? %>
-        <div class="card-action">
-          <%= link_to 'Certificate of employment', print_reference_employee_path(@employee, format: :pdf), target: :_blank %>
-        </div>
-      <% end %>
     </div>
   </div>
 

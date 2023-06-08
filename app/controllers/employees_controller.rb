@@ -20,7 +20,6 @@ class EmployeesController < ApplicationController
     @employee = Employee.new(employee_params)
 
     if @employee.save
-      flash[:success] = "Employee created!"
       redirect_to @employee
     else
       render :new, status: :unprocessable_entity
@@ -31,10 +30,9 @@ class EmployeesController < ApplicationController
     @employee = Employee.find(params[:id])
     previous_params = @employee.clone
 
-    history_points = []
     employee_params.each do |key, value|
       if value.to_s != previous_params.send(key).to_s && key != 'photo'
-        history_points << @employee.history_point.create(
+        @employee.history_point.create(
           description: "#{Time.now.strftime('%Y-%m-%d %H:%M')} Changed #{key} from #{previous_params.send(key)} to #{value}"
         )
       end

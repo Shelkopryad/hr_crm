@@ -15,14 +15,14 @@ class VacationsController < ApplicationController
 
   def cancel_vacation
     employee = Employee.find(params[:employee_id])
-    vacation = employee.contract.last.vacation.find(params[:id])
+    vacation = Vacation.find(params[:id])
     vacation.update(status: 'canceled')
     redirect_to employee
   end
 
   def print_application
     @employee = Employee.find(params[:employee_id])
-    @vacation = @employee.contract.last.vacation.find(params[:id])
+    @vacation = Vacation.find(params[:id])
 
     render pdf: "#{@employee.name} #{@employee.last_name}",
            template: "vacations/vacat_app",
