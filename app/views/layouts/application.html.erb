@@ -23,10 +23,12 @@
       <div class="nav-wrapper">
         <ul id="nav-mobile" class="left hide-on-med-and-down">
           <li><%= link_to 'Employees', employees_path %></li>
-          <li><%= link_to 'Settings', settings_path %></li>
         </ul>
       </div>
     </nav>
+    <% flash.each do |message_type, message| %>
+      <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
     <%= yield %>
     <%= debug(params) if Rails.env.development? %>
   </div>

@@ -5,20 +5,24 @@ class VacationsController < ApplicationController
 
   def create
     @employee = Employee.find(params[:employee_id])
-    @vacation = @employee.vacation.create(vacation_params)
+    @contract = @employee.contract.last
+    employee_vacations = @contract.vacation.reduce(vacation_params[:duration].to_i) { |zero, it| it.duration.to_i + zero }
+    unless employee_vacations > 20
+      @contract.vacation.create(vacation_params)
+    end
     redirect_to @employee
   end
 
   def cancel_vacation
     employee = Employee.find(params[:employee_id])
-    vacation = employee.vacation.find(params[:id])
+    vacation = employee.contract.last.vacation.find(params[:id])
     vacation.update(status: 'canceled')
     redirect_to employee
   end
 
   def print_application
     @employee = Employee.find(params[:employee_id])
-    @vacation = @employee.vacation.find(params[:id])
+    @vacation = @employee.contract.last.vacation.find(params[:id])
 
     render pdf: "#{@employee.name} #{@employee.last_name}",
            template: "vacations/vacat_app",

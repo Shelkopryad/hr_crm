@@ -20,6 +20,7 @@ class EmployeesController < ApplicationController
     @employee = Employee.new(employee_params)
 
     if @employee.save
+      flash[:success] = "Employee created!"
       redirect_to @employee
     else
       render :new, status: :unprocessable_entity

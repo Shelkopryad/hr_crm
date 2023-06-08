@@ -1,7 +1,6 @@
 class Employee < ApplicationRecord
   has_many :history_point, dependent: :destroy
   has_many :contract, dependent: :destroy
-  has_many :vacation, dependent: :destroy
   has_one_attached :photo
   validates :name, presence: true
   validates :last_name, presence: true
