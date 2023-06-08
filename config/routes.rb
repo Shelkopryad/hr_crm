@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     member do
       get :print_reference
     end
+    resources :contracts
     resources :vacations do
       member do
         get :print_application
@@ -11,6 +12,8 @@ Rails.application.routes.draw do
       end
     end
   end
+
+  resources :settings
 
   
   # Defines the root path route ("/")

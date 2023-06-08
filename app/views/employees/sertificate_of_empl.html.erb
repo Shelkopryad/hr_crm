@@ -4,3 +4,4 @@
 <p>Some Company</p>
 <h4>Position: <%= @employee.current_position %></h4>
 <p>Date of employing: <%= @employee.date_of_employing %></p>
+<p>Contract: <%= @employee.contract.last.start_date %> - <%= @employee.contract.last.end_date %></p>
