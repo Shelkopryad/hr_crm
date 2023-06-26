@@ -2,10 +2,18 @@ class EmployeesController < ApplicationController
 
   def index
     @employees = Employee.all
+    respond_to do |format|
+      format.html
+      format.json  { render :json => @employees }
+    end
   end
 
   def show
     @employee = Employee.find(params[:id])
+    respond_to do |format|
+      format.html
+      format.json  { render :json => @employee }
+    end
   end
 
   def new
